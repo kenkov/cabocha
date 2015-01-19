@@ -148,7 +148,7 @@ class Token:
 
 if __name__ == '__main__':
 
-    text = "今日は伝説のステーキを食べに行きますっ。"
+    text = "今日は伝説のステーキを食べに行きます。"
     tree = CaboChaAnalyzer().parse(text)
 
     for chunk in tree:
