@@ -6,8 +6,8 @@ from collections import defaultdict
 
 
 class CaboChaAnalyzer:
-    def __init__(self):
-        self.parser = CaboCha.Parser()
+    def __init__(self, *args):
+        self.parser = CaboCha.Parser(*args)
 
     def parse(self, text):
         tree = self.parser.parse(text)
