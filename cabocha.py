@@ -132,7 +132,7 @@ class Chunk:
     def has_prev_links(self):
         return bool(self.prev_links)
 
-    def dump(self):
+    def dict(self):
         return {
             "id": self.id,
             "additional_info": self.additional_info,
@@ -144,7 +144,7 @@ class Chunk:
             "score": self.score,
             "token_pos": self.token_pos,
             "token_size": self.token_size,
-            "tokens": [token.dump() for token in self.tokens],
+            "tokens": [token.dict() for token in self.tokens],
             "next_link_id": self.next_link_id,
             "prev_link_ids": self.prev_link_ids,
         }
@@ -183,7 +183,7 @@ class Token:
             self.pos,
         )
 
-    def dump(self):
+    def dict(self):
         return {
             "id": self.id,
             "additional_info": self.additional_info,
@@ -218,4 +218,4 @@ if __name__ == '__main__':
                     str(chunk),
                     str(chunk.next_link)
                 ))
-            pprint(chunk.dump())
+            pprint(chunk.dict())
