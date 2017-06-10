@@ -3,6 +3,7 @@
 
 import CaboCha
 from collections import defaultdict
+import pred_search as search
 
 
 class CaboChaAnalyzer:
@@ -83,6 +84,15 @@ class Tree:
     def __iter__(self):
         return iter(self.chunks)
 
+    def find_pred(self, is_pred_token=search._is_pred_token):
+        return search.find_pred(self, is_pred_token=is_pred_token)
+
+    def rfind_pred(self, is_pred_token=search._is_pred_token):
+        return search.rfind_pred(self, is_pred_token=is_pred_token)
+
+    def find_preds(self, is_pred_token=search._is_pred_token):
+        return search.find_preds(self, is_pred_token=is_pred_token)
+
 
 class Chunk:
     def __init__(
@@ -110,6 +120,7 @@ class Chunk:
         self.token_pos = token_pos
         self.token_size = token_size
         self.tokens = tokens
+        self.surface = self.surface()
 
     def __iter__(self):
         return iter(self.tokens)
@@ -131,6 +142,15 @@ class Chunk:
 
     def has_prev_links(self):
         return bool(self.prev_links)
+
+    def get_tokens(self, end=None):
+        if end:
+            return [token for token in self.tokens if token.id < end]
+        else:
+            return self.tokens
+
+    def surface(self):
+        return "".join(token.surface for token in self)
 
     def dict(self):
         return {
