@@ -144,7 +144,7 @@ class Chunk:
         return bool(self.prev_links)
 
     def get_tokens(self, end=None):
-        if end:
+        if end >= 0:
             return [token for token in self.tokens if token.id < end]
         else:
             return self.tokens
