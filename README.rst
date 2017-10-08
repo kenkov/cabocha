@@ -63,6 +63,7 @@ CaboCha wrapper
     >>> chunks[-1].prev_links[0].prev_links[0].surface
     '日本語の'
     >>> chunks[-1].prev_links[0].prev_links[0].prev_links
+    []
 
 特定の条件に当てはまるチャンクやトークンを取り出す
 
