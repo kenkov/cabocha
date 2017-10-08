@@ -25,6 +25,7 @@ CaboCha wrapper
 係り受け解析をする
 
 ::
+
     >>> from cabocha.analyzer import CaboChaAnalyzer
     >>> analyzer = CaboChaAnalyzer()
     >>> tree = analyzer.parse("日本語の形態素解析はすごい")
