@@ -3,7 +3,7 @@
 
 import CaboCha
 from collections import defaultdict
-import pred_search as search
+import cabocha.filter
 
 
 class CaboChaAnalyzer:
@@ -84,14 +84,14 @@ class Tree:
     def __iter__(self):
         return iter(self.chunks)
 
-    def find_pred(self, is_pred_token=search._is_pred_token):
-        return search.find_pred(self, is_pred_token=is_pred_token)
+    def find(self, function=cabocha.filter._is_function_chunk):
+        return cabocha.filter.find(self, function=function)
 
-    def rfind_pred(self, is_pred_token=search._is_pred_token):
-        return search.rfind_pred(self, is_pred_token=is_pred_token)
+    def lfind(self, function=cabocha.filter._is_function_chunk):
+        return cabocha.filter.lfind(self, function=function)
 
-    def find_preds(self, is_pred_token=search._is_pred_token):
-        return search.find_preds(self, is_pred_token=is_pred_token)
+    def rfind(self, function=cabocha.filter._is_function_chunk):
+        return cabocha.filter.rfind(self, function=function)
 
 
 class Chunk:
@@ -169,6 +169,15 @@ class Chunk:
             "prev_link_ids": self.prev_link_ids,
         }
 
+    def find(self, function=cabocha.filter._is_function_token):
+        return cabocha.filter.find(self, function=function)
+
+    def lfind(self, function=cabocha.filter._is_function_token):
+        return cabocha.filter.lfind(self, function=function)
+
+    def rfind(self, function=cabocha.filter._is_function_token):
+        return cabocha.filter.rfind(self, function=function)
+
 
 class Token:
     def __init__(
@@ -223,23 +232,3 @@ class Token:
             "cform": self.cform,
             "genkei": self.genkei
         }
-
-
-if __name__ == '__main__':
-    import sys
-    from pprint import pprint
-
-    analyzer = CaboChaAnalyzer()
-
-    fd = open(sys.argv[1]) if len(sys.argv) >= 2 else sys.stdin
-
-    for text in (_.strip() for _ in fd):
-        tree = analyzer.parse(text)
-        for chunk in tree:
-            if chunk.has_next_link():
-                print("{} => {} => {}".format(
-                    [str(c) for c in chunk.prev_links],
-                    str(chunk),
-                    str(chunk.next_link)
-                ))
-            pprint(chunk.dict())
