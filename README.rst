@@ -1,17 +1,31 @@
-==============================
-CaboCha wrapper
-==============================
+===================================
+CaboCha wrapper package for Python
+===================================
 
-日本語係り受け解析器 `CaboCha <https://code.google.com/p/cabocha/>`_
-を便利に使うためのラッパーパッケージです。
+日本語係り受け解析器 `CaboCha <http://taku910.github.io/cabocha/>`_
+を Python から便利に使うためのラッパーパッケージです。
 
 
 インストール
 ==============
 
-はじめに、CaboCha の Python バインディングをインストールします。
+はじめに、 `CaboCha 公式ページ <http://taku910.github.io/cabocha/>`_
+にしたがって CaboCha をインストールしてください。
 
-次にこのリポジトリを clone し、pip にてインストールしてください。
+MacOS で Homebrew を使用している場合は、cabocha および mecab-ipadic パッケージを
+インストールします。
+
+次に CaboCha の Python バインディングをインストールします。
+Python バインディングはダウンロードして展開した cabocha-0.xx ディレクトリ下の
+python ディレクトリに入っているので、pip でインストールします
+
+::
+
+    # cabocha-0.68 の場合
+    cd cabocha-0.68
+    pip install python/
+
+最後にこのリポジトリを clone し、pip にてインストールしてください。
 
 ::
 
