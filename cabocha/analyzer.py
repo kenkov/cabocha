@@ -129,12 +129,21 @@ class Chunk:
         return self.tokens[key]
 
     def __str__(self):
-        return " ".join(str(token) for token in self)
+        return self.__repr__()
+
+    def __repr__(self):
+        return f'Chunk("{self.surface}")'
+
+    @property
+    def next_link(self):
+        if self.next_link_id == -1:
+            raise EndOfLinkException()
+        return self._next_link
 
     def set_links(self, prev_links, chunks):
         self.next_link_id = self.link
         self.prev_link_ids = prev_links
-        self.next_link = chunks[self.next_link_id]
+        self._next_link = chunks[self.next_link_id]
         self.prev_links = [chunks[i] for i in prev_links]
 
     def has_next_link(self):
@@ -209,10 +218,10 @@ class Token:
         self.genkei = feature_list[6]
 
     def __str__(self):
-        return "{}/{}".format(
-            self.surface,
-            self.pos,
-        )
+        return self.__repr__()
+
+    def __repr__(self):
+        return f'Token("{self.surface}")'
 
     def dict(self):
         return {
@@ -232,3 +241,8 @@ class Token:
             "cform": self.cform,
             "genkei": self.genkei
         }
+
+
+class EndOfLinkException(Exception):
+    """リンク先をもたない Chunk オブジェクトから next_link
+    を呼び出した際に発生する例外"""
