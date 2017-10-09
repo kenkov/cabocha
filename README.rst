@@ -70,9 +70,7 @@ CaboCha wrapper
 
 ::
 
-    >>> res = tree.find(function=lambda chunk: any(token.pos == "名詞" for token in chunk))
-    >>> res
+    >>> tree.find(function=lambda chunk: any(token.pos == "名詞" for token in chunk))
     [Chunk("日本語の"), Chunk("形態素解析は")]
-    >>> res = tree.find(function=lambda chunk: any(token.pos == "形容詞" for token in chunk))
-    >>> res
+    >>> tree.find(function=lambda chunk: any(token.pos == "形容詞" for token in chunk))
     [Chunk("すごい")]
