@@ -11,9 +11,8 @@ CaboCha wrapper package for Python
 
 はじめに、 `CaboCha 公式ページ <http://taku910.github.io/cabocha/>`_
 にしたがって CaboCha をインストールしてください。
-
 MacOS で Homebrew を使用している場合は、cabocha および mecab-ipadic パッケージを
-インストールします。
+インストールできます。
 
 次に CaboCha の Python バインディングをインストールします。
 Python バインディングは ダウンロードして展開した CaboCha ソースコードディレクトリ直下の
