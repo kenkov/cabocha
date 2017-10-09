@@ -33,12 +33,12 @@ CaboCha wrapper
     ...     for token in chunk:
     ...         print(token)
     ...
-    Token(日本語)
-    Token(の)
-    Token(形態素)
-    Token(解析)
-    Token(は)
-    Token(すごい)
+    Token("日本語")
+    Token("の")
+    Token("形態素")
+    Token("解析")
+    Token("は")
+    Token("すごい")
 
 チャンクの係り先をたどる
 
