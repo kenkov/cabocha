@@ -16,7 +16,7 @@ MacOS で Homebrew を使用している場合は、cabocha および mecab-ipad
 インストールします。
 
 次に CaboCha の Python バインディングをインストールします。
-Python バインディングはダウンロードして展開した cabocha-0.xx ディレクトリ下の
+Python バインディングは ダウンロードして展開した CaboCha ソースコードディレクトリ直下の
 python ディレクトリに入っているので、pip でインストールします
 
 ::
