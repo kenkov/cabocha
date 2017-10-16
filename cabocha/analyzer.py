@@ -216,6 +216,7 @@ class Token:
         self.ctype = feature_list[4]  # 活用型
         self.cform = feature_list[5]  # 活用形
         self.genkei = feature_list[6]
+        self.yomi = feature_list[7]
 
     def __str__(self):
         return self.__repr__()
@@ -239,7 +240,8 @@ class Token:
             "pos3": self.pos3,
             "ctype": self.ctype,
             "cform": self.cform,
-            "genkei": self.genkei
+            "genkei": self.genkei,
+            "yomi": self.yomi
         }
 
 
