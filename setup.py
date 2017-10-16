@@ -7,7 +7,7 @@ from distutils.core import setup
 setup(
     name="cabocha",
     packages=["cabocha"],
-    version="0.1.1",
+    version="0.1.2",
     author="kenkov",
     author_email="kenkovtan@gmail.com",
     url="http://kenkov.jp",
