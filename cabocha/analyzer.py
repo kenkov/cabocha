@@ -216,7 +216,13 @@ class Token:
         self.ctype = feature_list[4]  # 活用型
         self.cform = feature_list[5]  # 活用形
         self.genkei = feature_list[6]
-        self.yomi = feature_list[7]
+
+        # 固有名詞の場合 feature_list に「読み」「発音」は含まれない
+        # のでベット処理が必要
+        if feature_list_size >= 8:
+            self.yomi = feature_list[7]
+        else:
+            self.yomi = surface
 
     def __str__(self):
         return self.__repr__()
