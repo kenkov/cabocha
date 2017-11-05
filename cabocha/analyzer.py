@@ -10,6 +10,9 @@ class CaboChaAnalyzer:
     def __init__(self, *args):
         self.parser = CaboCha.Parser(*args)
 
+    def analyze(self, text):
+        return self.parse(text)
+
     def parse(self, text):
         tree = self.parser.parse(text)
 
@@ -84,6 +87,14 @@ class Tree:
     def __iter__(self):
         return iter(self.chunks)
 
+    @property
+    def surface(self):
+        return "".join(chunk.surface for chunk in self)
+
+    @property
+    def wakati(self):
+        return " ".join(chunk.wakati for chunk in self)
+
     def find(self, function=cabocha.filter._is_function_chunk):
         return cabocha.filter.find(self, function=function)
 
@@ -120,7 +131,6 @@ class Chunk:
         self.token_pos = token_pos
         self.token_size = token_size
         self.tokens = tokens
-        self.surface = self.surface()
 
     def __iter__(self):
         return iter(self.tokens)
@@ -133,6 +143,14 @@ class Chunk:
 
     def __repr__(self):
         return f'Chunk("{self.surface}")'
+
+    @property
+    def surface(self):
+        return "".join(token.surface for token in self)
+
+    @property
+    def wakati(self):
+        return " ".join(token.surface for token in self)
 
     @property
     def next_link(self):
@@ -157,9 +175,6 @@ class Chunk:
             return [token for token in self.tokens if token.id < end]
         else:
             return self.tokens
-
-    def surface(self):
-        return "".join(token.surface for token in self)
 
     def dict(self):
         return {
