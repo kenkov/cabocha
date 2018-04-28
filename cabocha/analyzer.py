@@ -87,6 +87,9 @@ class Tree:
     def __iter__(self):
         return iter(self.chunks)
 
+    def __getitem__(self, key):
+        return self.chunks[key]
+
     @property
     def surface(self):
         return "".join(chunk.surface for chunk in self)
