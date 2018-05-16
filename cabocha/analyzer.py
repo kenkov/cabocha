@@ -7,8 +7,8 @@ import cabocha.filter
 
 
 class CaboChaAnalyzer:
-    def __init__(self, *args):
-        self.parser = CaboCha.Parser(*args)
+    def __init__(self, *args, parser=CaboCha.Parser):
+        self.parser = parser(*args)
 
     def analyze(self, text):
         return self.parse(text)
