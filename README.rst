@@ -27,7 +27,7 @@ CaboCha インストール後、 CaboCha の Python バインディングをイ�
 最後にこのライブラリをインストールします。
 
 ::
-    pip install git+https://github.com/kenkov/cabocha@0.1.3
+    pip install git+https://github.com/kenkov/cabocha@0.1.4
 
 
 使い方
